@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import App from './src/App';
+import App from './src/index.html';
 import './App.css';
 
 export default defineConfig({
