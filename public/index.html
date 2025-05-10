@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Points System</title>
+</head>
+<body>
+  <h1>Points: <span id="pointsDisplay">0</span></h1>
+  <button onclick="addPoints()">Add Points</button>
+  <button onclick="syncToServer()">Sync to Server</button>
+
+  <script>
+    const userId = 'user1'; // Example user ID
+    
+    // Load points from local storage
+    let points = parseInt(localStorage.getItem('points') || '0');
+    updateDisplay();
+
+    function addPoints() {
+      points += 1;
+      localStorage.setItem('points', points);
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      document.getElementById('pointsDisplay').textContent = points;
+    }
+
+    async function syncToServer() {
+      try {
+        const response = await fetch(`/sync/${userId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ points })
+        });
+        const data = await response.json();
+        if (data.success) {
+          alert('Synced successfully!');
+        }
+      } catch (error) {
+        alert('Failed to sync with server');
+      }
+    }
+  </script>
+</body>
+</html>
