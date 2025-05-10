@@ -1,16 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: './', // Указывает, что пути должны быть относительными
   server: {
-    host: '0.0.0.0', // Позволяет доступ по локальному IP
+    host: '0.0.0.0',
   },
-  build: {
-    rollupOptions: {
-      // Указываем файл как внешнюю зависимость
-      external: ['/src/index.jsx']
-    }
-  }
 });
