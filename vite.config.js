@@ -6,11 +6,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
+  },
+  build: {
+    rollupOptions: {
+      external: ['/src/index.jsx']
+    }
   }
-})
-
-build: {
-  rollupOptions: {
-    external: ['/src/index.jsx']
-  }
-}
+});
