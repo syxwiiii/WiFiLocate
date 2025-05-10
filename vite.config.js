@@ -4,7 +4,7 @@ import App from './App';
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // Указывает, что пути должны быть относительными
+  base: './WiFiLocate/', // Указывает, что пути должны быть относительными
   server: {
     host: '0.0.0.0',
   },
